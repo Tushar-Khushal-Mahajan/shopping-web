@@ -107,8 +107,7 @@ body {
 						href="sales"
 						class="list-group-item list-group-item-action py-2 ripple background"><i
 						class="fa fa-line-chart" aria-hidden="true"></i> <span>Sales</span></a> -->
-					<a
-						href="logOut"
+					<a href="logOut"
 						class="list-group-item list-group-item-action py-2 ripple background"><i
 						class="fa fa-sign-out" aria-hidden="true"></i> <span>Log
 							Out</span></a>
@@ -214,27 +213,6 @@ body {
 								<div class="p-4 table-class" id="confirm-orders"
 									style="display: none;">
 									<table class="table" id="confirmOrderTable">
-										<!-- <tr>
-											<th>Ord. ID</th>
-											<th>Product</th>
-											<th>Description</th>
-											<th>Qty</th>
-											<th>Total</th>
-											<th>Btn</th>
-										</tr> -->
-										<%-- <c:forEach items="${confirmOrders}" var="pOrder">
-											<tr>
-												<td>${pOrder.getoId()}</td>
-												<td>${pOrder.getpName()}</td>
-												<td>${pOrder.getpDesc()}</td>
-												<td>${pOrder.getpQty()}</td>
-												<td>${pOrder.getTotalPrice()}</td>
-												<td>
-													<button class="btn btn-primary"
-														onClick="delivered(${pOrder.getoId()})">Delivered</button>
-												</td>
-											</tr>
-										</c:forEach> --%>
 									</table>
 								</div>
 							</div>
@@ -291,7 +269,6 @@ body {
 				success : function(responce){
 					$("#confirmOrderTable").html("");
 					$("#confirmOrderTable").append(responce);
-					//location.reload(true);
 				}
 			});  
 		}

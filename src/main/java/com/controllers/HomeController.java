@@ -4,7 +4,7 @@ import java.util.List;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
-import javax.websocket.Session;
+//import javax.websocket.Session;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -36,7 +36,7 @@ public class HomeController {
 	public String getHome(HttpServletRequest request, Model model) {
 
 		HttpSession session = request.getSession();
-
+		
 		System.out.println(session.getServletContext().getRealPath("/"));
 
 		this.custId = (Integer) session.getAttribute("customerId");
@@ -113,7 +113,6 @@ public class HomeController {
 	}
 
 	@ResponseBody
-
 	@RequestMapping("/buyWait")
 	public String buyWait(@ModelAttribute() OrderClass ordered) {
 		System.out.println(ordered);

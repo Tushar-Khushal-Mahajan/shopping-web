@@ -86,15 +86,8 @@ body {
 					</a> <a href="orders" rel="noopener noreferrer"
 						class="list-group-item list-group-item-action py-2 ripple background"><i
 						class="fa fa-shopping-cart" aria-hidden="true"></i> <span>Orders</span></a>
-					<!-- <a href="users" rel="noopener noreferrer"
-						class="list-group-item list-group-item-action py-2 ripple background"><i
-						class="fa fa-users" aria-hidden="true"></i> <span>Users</span></a> -->
-					<!-- <a
-						href="sales"
-						class="list-group-item list-group-item-action py-2 ripple background"><i
-						class="fa fa-line-chart" aria-hidden="true"></i> <span>Sales</span></a> -->
-					<a
-						href="logOut"
+
+					<a href="logOut"
 						class="list-group-item list-group-item-action py-2 ripple background"><i
 						class="fa fa-sign-out" aria-hidden="true"></i> <span>Log
 							Out</span></a>
@@ -150,8 +143,14 @@ body {
 			<!-- Start form layout -->
 			<div class="container col-md-8 mt-5">
 				<h2 class="text-center">Add Product Details Here.</h2>
-				<form action="addProduct" method="post"
-					enctype="multipart/form-data">
+				<!-- <form action="addProduct" method="post"
+					enctype="multipart/form-data" id="addProductForm">
+					 -->
+				<div class="alert alert-success" id="alert" role="alert">Product
+					Saved..!</div>
+
+				<form id="addProductForm">
+
 					<div class="form-group">
 						<label for="productName">Product Name</label> <input type="text"
 							class="form-control" id="productName"
@@ -187,5 +186,37 @@ body {
 		</div>
 	</main>
 	<!--Main layout-->
+
+	<script>
+		$("#alert").hide();
+
+		$('#addProductForm').submit(function(e) {
+			$.ajax({
+				url : 'addProduct',
+				type : 'POST',
+				data : new FormData(this),
+				processData : false,
+				contentType : false,
+
+				success : function(data) {
+
+					if (data == "ok"){
+						alert("data saved");
+					
+						$("#alert").show();
+						
+						setTimeout(()=>{
+							$("#alert").hide();
+						}, 3000);
+					}
+					else
+						alert("something went wrong");
+				}
+			});
+			alert("form submit");
+			e.preventDefault();
+		});
+	</script>
+
 </body>
 </html>

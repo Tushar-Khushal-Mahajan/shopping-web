@@ -159,6 +159,7 @@ public class AdminController {
 	 * BELOW METHOD RESPONSIBLE TO STORE PRODUCT DETAILS INTO DB. <br/>
 	 * called from addProducts.jsp page
 	 **/
+
 	@ResponseBody
 	@RequestMapping(value = "/addProduct", method = RequestMethod.POST)
 	public String getAdminForm(@ModelAttribute Product product, @RequestParam("image") CommonsMultipartFile file,
@@ -185,12 +186,15 @@ public class AdminController {
 
 			productDaoImpl.addProduct(product);
 
+			return "ok";
+
 		} catch (Exception e) {
 			e.printStackTrace();
 			System.out.println("faild to write image");
+
+			return "err";
 		}
 
-		return "product add";
 	}
 
 	/* ========================================= */
